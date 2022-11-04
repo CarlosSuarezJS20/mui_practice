@@ -62,15 +62,6 @@ const theme = createTheme({
       main: themePalette.ARCORANGE,
     },
   },
-  // components: {
-  //   MuiAppBar: {
-  //     defaultProps: {
-  //       style: {
-  //         textTransform: "uppercase",
-  //       },
-  //     },
-  //   },
-  // },
   typography: {
     h3: {
       fontWeight: typographyFonts.H3,
