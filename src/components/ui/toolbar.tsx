@@ -3,6 +3,7 @@ import ToolBar from "@mui/material/Toolbar";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Button from "@mui/material/Button";
+import MenuPositionedToolTip from "./menuToolbar";
 
 import { makeStyles } from "@mui/styles";
 import { styled } from "@mui/material/styles";
@@ -34,6 +35,9 @@ const useStyles = makeStyles(() => ({
   logoContainer: {
     "&.MuiButton-root": {
       padding: 0,
+      "&:hover": {
+        backgroundColor: "transparent",
+      },
     },
   },
 }));
@@ -50,28 +54,40 @@ const StyledButton = styled(Button)(() => ({
 
 const ToolBarCom: React.FC = () => {
   const [value, setValue] = React.useState(0);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
   // handles classes for non react elements
   const classes = useStyles();
 
   const onChangeHandler = (e: React.SyntheticEvent, value: number) => {
+    console.log(value);
     setValue(value);
   };
 
   useEffect(() => {
-    let refreshValue: any;
+    console.log(value);
     if (window.location.pathname === "/" && value != 0) {
-      refreshValue = 0;
-    } else if (window.location.pathname === "/services" && value != 1) {
-      refreshValue = 1;
-    } else if (window.location.pathname === "/revolution" && value != 2) {
-      refreshValue = 2;
-    } else if (window.location.pathname === "/about" && value != 3) {
-      refreshValue = 3;
-    } else if (window.location.pathname === "/contact" && value != 4) {
-      refreshValue = 4;
+      setValue(0);
+    } else if (window.location.pathname === "/services" && value !== 1) {
+      setValue(1);
+    } else if (window.location.pathname === "/revolution" && value !== 2) {
+      setValue(2);
+    } else if (window.location.pathname === "/about" && value !== 3) {
+      setValue(3);
+    } else if (window.location.pathname === "/contact" && value !== 4) {
+      setValue(4);
+    } else if (window.location.pathname === "/estimate" && value !== 5) {
+      setValue(5);
     }
-    setValue(refreshValue);
-  }, []);
+  }, [value]);
+
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <ToolBar disableGutters>
@@ -79,6 +95,7 @@ const ToolBarCom: React.FC = () => {
       <Button
         component={Link}
         to='/'
+        disableRipple
         onClick={() => {
           setValue(0);
         }}
@@ -102,37 +119,69 @@ const ToolBarCom: React.FC = () => {
           label='Home'
         />
         <Tab
+          id='services-positioned-tab'
           component={Link}
           to='/services'
           className={classes.tab}
           value={1}
           label='Services'
+          // handles menu tooltip
+          aria-controls={open ? "menu-positioned-tooltip" : undefined}
+          aria-expanded={open ? "true" : undefined}
+          onMouseOver={(e) => {
+            handleClick(e);
+          }}
         />
         <Tab
           component={Link}
-          to='revolution'
+          to='/revolution'
           className={classes.tab}
           value={2}
           label=' The Revolution'
+          // handles menu tooltip
+          aria-controls={open ? "menu-positioned-tooltip" : undefined}
+          aria-expanded={open ? "true" : undefined}
+          onMouseOver={(e) => {
+            handleClick(e);
+          }}
         />
         <Tab
           component={Link}
-          to='about'
+          to='/about'
           className={classes.tab}
           value={3}
           label='About Us'
+          // handles menu tooltip
+          aria-controls={open ? "menu-positioned-tooltip" : undefined}
+          aria-expanded={open ? "true" : undefined}
+          onMouseOver={(e) => {
+            handleClick(e);
+          }}
         />
         <Tab
           component={Link}
-          to='contact'
+          to='/contact'
           className={classes.tab}
           value={4}
           label=' Contact Us'
+          // handles menu tooltip
+          aria-controls={open ? "menu-positioned-tooltip" : undefined}
+          aria-expanded={open ? "true" : undefined}
+          onMouseOver={(e) => {
+            handleClick(e);
+          }}
         />
       </Tabs>
       <StyledButton variant='contained' color='secondary'>
         Free Trial
       </StyledButton>
+      <MenuPositionedToolTip
+        id='menu-positioned-tooltip'
+        menu_id='services-menu'
+        open={open}
+        anchorElement={anchorEl}
+        closeMenu={handleClose}
+      />
     </ToolBar>
   );
 };
