@@ -1,5 +1,33 @@
 import React, { useEffect } from "react";
 import { Menu, MenuItem } from "@mui/material";
+import { Link } from "react-router-dom";
+import { makeStyles } from "@mui/styles";
+import theme from "./theme";
+
+// styling
+
+const useStyles = makeStyles(() => ({
+  menu: {
+    "&.MuiMenu-paper": {
+      backgroundColor: theme.palette.common.blue,
+      color: "white",
+      borderRadius: "0px",
+    },
+  },
+  menuTab: {
+    "&.MuiMenuItem-root": {
+      opacity: 0.9,
+      ...theme.typography.tab,
+      "&:hover": {
+        opacity: 1,
+      },
+    },
+    "&.Mui-selected": {
+      ...theme.typography.tab,
+      opacity: 1,
+    },
+  },
+}));
 
 interface ProsMenuPositioned {
   id: string;
@@ -7,6 +35,7 @@ interface ProsMenuPositioned {
   anchorElement: HTMLElement | null;
   open: boolean;
   closeMenu: () => void;
+  setValueMenuItem: (index: number) => void;
 }
 
 const MenuPositionedToolTip: React.FC<ProsMenuPositioned> = ({
@@ -15,10 +44,35 @@ const MenuPositionedToolTip: React.FC<ProsMenuPositioned> = ({
   id,
   menu_id,
   closeMenu,
+  setValueMenuItem,
 }) => {
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+
+  const classes = useStyles();
+  const menuOptions1 = [
+    { name: "Services", link: "/services" },
+    { name: "Custome Software Dev", link: "/customsoftware" },
+    { name: "Mobile Apps Dev", link: "/mobileapps" },
+    { name: "Website Dev", link: "/websites" },
+  ];
+
+  useEffect(() => {
+    console.log(selectedIndex);
+  }, []);
+
+  const elementClickedHandler = (
+    e: React.MouseEvent<HTMLElement>,
+    i: number
+  ) => {
+    setSelectedIndex(i);
+    closeMenu();
+    setValueMenuItem(i);
+  };
+
   return (
     <Menu
       id={menu_id}
+      classes={{ paper: classes.menu }}
       anchorEl={anchorElement}
       open={open}
       aria-labelledby={id}
@@ -30,10 +84,24 @@ const MenuPositionedToolTip: React.FC<ProsMenuPositioned> = ({
         vertical: "top",
         horizontal: "left",
       }}
-      MenuListProps={{ onMouseLeave: closeMenu }}>
-      <MenuItem onClick={closeMenu}>Test 1</MenuItem>
-      <MenuItem onClick={closeMenu}>Test 2</MenuItem>
-      <MenuItem onClick={closeMenu}>Test 3</MenuItem>
+      MenuListProps={{ onMouseLeave: closeMenu }}
+      elevation={0}>
+      {menuOptions1.map((item, index) => {
+        console.log(index === selectedIndex);
+        return (
+          <MenuItem
+            key={index}
+            component={Link}
+            to={item.link}
+            className={classes.menuTab}
+            selected={index === selectedIndex}
+            onClick={(e) => {
+              elementClickedHandler(e, index);
+            }}>
+            {item.name}
+          </MenuItem>
+        );
+      })}
     </Menu>
   );
 };
