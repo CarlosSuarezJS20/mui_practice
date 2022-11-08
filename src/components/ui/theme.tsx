@@ -1,6 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 
 import "@mui/material/styles";
+import "@mui/material/styles/createPalette";
 
 enum themePalette {
   ARCBLUE = "#0B72B9",
@@ -34,6 +35,13 @@ declare module "@mui/material/Typography" {
   }
 }
 
+declare module "@mui/material/styles/createPalette" {
+  interface CommonColors {
+    blue: string;
+    orange: string;
+  }
+}
+
 // create a brand new part of the theme
 
 // declare module "@mui/material/styles" {
@@ -60,6 +68,9 @@ const theme = createTheme({
     },
     secondary: {
       main: themePalette.ARCORANGE,
+    },
+    common: {
+      blue: themePalette.ARCBLUE,
     },
   },
   typography: {

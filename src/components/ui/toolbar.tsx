@@ -55,17 +55,15 @@ const StyledButton = styled(Button)(() => ({
 const ToolBarCom: React.FC = () => {
   const [value, setValue] = React.useState(0);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const [open, setOpen] = React.useState(false);
   // handles classes for non react elements
   const classes = useStyles();
 
   const onChangeHandler = (e: React.SyntheticEvent, value: number) => {
-    console.log(value);
     setValue(value);
   };
 
   useEffect(() => {
-    console.log(value);
     if (window.location.pathname === "/" && value != 0) {
       setValue(0);
     } else if (window.location.pathname === "/services" && value !== 1) {
@@ -83,10 +81,17 @@ const ToolBarCom: React.FC = () => {
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+    setOpen(true);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
+    setOpen(false);
+  };
+
+  // Helper function to set value for menu items
+  const setValueMenuItemsHandler = (menuItemIndex: number) => {
+    setValue(menuItemIndex);
   };
 
   return (
@@ -181,6 +186,7 @@ const ToolBarCom: React.FC = () => {
         open={open}
         anchorElement={anchorEl}
         closeMenu={handleClose}
+        setValueMenuItem={setValueMenuItemsHandler}
       />
     </ToolBar>
   );
