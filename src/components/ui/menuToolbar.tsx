@@ -16,7 +16,7 @@ const useStyles = makeStyles(() => ({
   },
   menuTab: {
     "&.MuiMenuItem-root": {
-      opacity: 0.9,
+      opacity: 0.7,
       ...theme.typography.tab,
       "&:hover": {
         opacity: 1,
@@ -34,6 +34,7 @@ interface ProsMenuPositioned {
   menu_id: string;
   anchorElement: HTMLElement | null;
   open: boolean;
+  tabValue: number;
   closeMenu: () => void;
   setValueMenuItem: (index: number) => void;
 }
@@ -43,11 +44,11 @@ const MenuPositionedToolTip: React.FC<ProsMenuPositioned> = ({
   open,
   id,
   menu_id,
+  tabValue,
   closeMenu,
   setValueMenuItem,
 }) => {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
-
   const classes = useStyles();
   const menuOptions1 = [
     { name: "Services", link: "/services" },
@@ -57,8 +58,36 @@ const MenuPositionedToolTip: React.FC<ProsMenuPositioned> = ({
   ];
 
   useEffect(() => {
-    console.log(selectedIndex);
-  }, []);
+    switch (window.location.pathname) {
+      case "/services":
+        if (tabValue != 1) {
+          setSelectedIndex(0);
+        }
+        break;
+      case "/customsoftware":
+        if (tabValue != 1) {
+          setSelectedIndex(1);
+        }
+        break;
+      case "/customsoftware":
+        if (tabValue != 1) {
+          setSelectedIndex(1);
+        }
+        break;
+      case "/mobileapps":
+        if (tabValue != 1) {
+          setSelectedIndex(2);
+        }
+        break;
+      case "/websites":
+        if (tabValue != 1) {
+          setSelectedIndex(3);
+        }
+        break;
+      default:
+        break;
+    }
+  }, [selectedIndex]);
 
   const elementClickedHandler = (
     e: React.MouseEvent<HTMLElement>,
