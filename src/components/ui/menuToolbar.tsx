@@ -58,6 +58,7 @@ const MenuPositionedToolTip: React.FC<ProsMenuPositioned> = ({
   ];
 
   useEffect(() => {
+    console.log(selectedIndex);
     switch (window.location.pathname) {
       case "/services":
         if (tabValue != 1) {
@@ -116,7 +117,6 @@ const MenuPositionedToolTip: React.FC<ProsMenuPositioned> = ({
       MenuListProps={{ onMouseLeave: closeMenu }}
       elevation={0}>
       {menuOptions1.map((item, index) => {
-        console.log(index === selectedIndex);
         return (
           <MenuItem
             key={index}
