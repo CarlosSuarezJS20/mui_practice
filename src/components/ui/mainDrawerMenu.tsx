@@ -83,7 +83,11 @@ const MainDrawerMenu: React.FC = () => {
         <List disablePadding>
           <ListItemButton
             component={Link}
-            className={classes.selectedLink}
+            sx={{
+              "&.Mui-selected": {
+                backgroundColor: "rgba(10, 0, 50, 0.1)",
+              },
+            }}
             to='/'
             onClick={(event) => {
               setIsDrawerOpen(false);
@@ -96,6 +100,11 @@ const MainDrawerMenu: React.FC = () => {
           </ListItemButton>
           <ListItemButton
             component={Link}
+            sx={{
+              "&.Mui-selected": {
+                backgroundColor: "rgba(10, 0, 50, 0.1)",
+              },
+            }}
             to='/services'
             onClick={(event) => {
               setIsDrawerOpen(false);
@@ -108,6 +117,11 @@ const MainDrawerMenu: React.FC = () => {
           </ListItemButton>
           <ListItemButton
             component={Link}
+            sx={{
+              "&.Mui-selected": {
+                backgroundColor: "rgba(10, 0, 50, 0.1)",
+              },
+            }}
             to='/revolution'
             onClick={(event) => {
               setIsDrawerOpen(false);
@@ -120,6 +134,11 @@ const MainDrawerMenu: React.FC = () => {
           </ListItemButton>
           <ListItemButton
             component={Link}
+            sx={{
+              "&.Mui-selected": {
+                backgroundColor: "rgba(10, 0, 50, 0.1)",
+              },
+            }}
             to='/about'
             onClick={(event) => {
               setIsDrawerOpen(false);
@@ -132,6 +151,11 @@ const MainDrawerMenu: React.FC = () => {
           </ListItemButton>
           <ListItemButton
             component={Link}
+            sx={{
+              "&.Mui-selected": {
+                backgroundColor: "rgba(10, 0, 50, 0.1)",
+              },
+            }}
             to='/contact'
             onClick={(event) => {
               setIsDrawerOpen(false);
@@ -146,9 +170,16 @@ const MainDrawerMenu: React.FC = () => {
           <ListItem
             button
             component={Link}
+            sx={{
+              "&.Mui-selected": {
+                backgroundColor: "rgba(10, 0, 50, 0.1)",
+              },
+            }}
             to='/estimate'
-            onClick={() => {
+            selected={selectedIndex === 5}
+            onClick={(event) => {
               setIsDrawerOpen(false);
+              handleSelected(event, 5);
             }}>
             <ListItemText
               disableTypography
