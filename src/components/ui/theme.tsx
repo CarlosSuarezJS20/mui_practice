@@ -5,7 +5,7 @@ import "@mui/material/styles/createPalette";
 
 enum themePalette {
   ARCBLUE = "#0B72B9",
-  ARCORANGE = "#FFBA60",
+  ARCORANGE = "#ff9100",
 }
 
 enum typographyFonts {
@@ -71,6 +71,7 @@ const theme = createTheme({
     },
     common: {
       blue: themePalette.ARCBLUE,
+      orange: themePalette.ARCORANGE,
     },
   },
   typography: {
@@ -92,7 +93,5 @@ const theme = createTheme({
     },
   },
 });
-
-// CARLOS
 
 export default theme;
