@@ -58,7 +58,6 @@ const MenuPositionedToolTip: React.FC<ProsMenuPositioned> = ({
   ];
 
   useEffect(() => {
-    console.log(selectedIndex);
     switch (window.location.pathname) {
       case "/services":
         if (tabValue != 1) {

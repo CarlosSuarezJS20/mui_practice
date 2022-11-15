@@ -23,14 +23,18 @@ const useStyles = makeStyles(() => ({
       backgroundColor: theme.palette.common.blue,
     },
   },
-  selectedLink: {
-    "&.MuiButtonBase-root-MuiListItemButton-root": {
-      backgroundColor: "red",
-    },
-  },
   drawerItem: {
     "&.MuiListItemText-root": {
       ...theme.typography.tab,
+      opacity: 0.7,
+      "&:hover": {
+        opacity: 1,
+      },
+    },
+  },
+  drawerItemSelected: {
+    "&.MuiListItemText-root": {
+      opacity: 1,
     },
   },
   estimate: {
@@ -51,9 +55,16 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const MainDrawerMenu: React.FC = () => {
+interface MainDrawerProps {
+  selectedValueHandler: (value_selected: number) => void;
+  selectedPosition: number;
+}
+
+const MainDrawerMenu: React.FC<MainDrawerProps> = ({
+  selectedPosition,
+  selectedValueHandler,
+}) => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
   const classes = useStyles();
   // Responsive swipe on mobile
   const iOS =
@@ -64,7 +75,7 @@ const MainDrawerMenu: React.FC = () => {
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     selectedIndex: number
   ) => {
-    setSelectedIndex(selectedIndex);
+    selectedValueHandler(selectedIndex);
   };
 
   return (
@@ -86,6 +97,7 @@ const MainDrawerMenu: React.FC = () => {
             sx={{
               "&.Mui-selected": {
                 backgroundColor: "rgba(10, 0, 50, 0.1)",
+                opacity: 1,
               },
             }}
             to='/'
@@ -93,8 +105,14 @@ const MainDrawerMenu: React.FC = () => {
               setIsDrawerOpen(false);
               handleSelected(event, 0);
             }}
-            selected={selectedIndex === 0}>
-            <ListItemText disableTypography className={classes.drawerItem}>
+            selected={selectedPosition === 0}>
+            <ListItemText
+              disableTypography
+              className={
+                selectedPosition === 0
+                  ? clsx(classes.drawerItem, classes.drawerItemSelected)
+                  : classes.drawerItem
+              }>
               Home
             </ListItemText>
           </ListItemButton>
@@ -110,8 +128,14 @@ const MainDrawerMenu: React.FC = () => {
               setIsDrawerOpen(false);
               handleSelected(event, 1);
             }}
-            selected={selectedIndex === 1}>
-            <ListItemText disableTypography className={classes.drawerItem}>
+            selected={selectedPosition === 1}>
+            <ListItemText
+              disableTypography
+              className={
+                selectedPosition === 1
+                  ? clsx(classes.drawerItem, classes.drawerItemSelected)
+                  : classes.drawerItem
+              }>
               Services
             </ListItemText>
           </ListItemButton>
@@ -127,8 +151,14 @@ const MainDrawerMenu: React.FC = () => {
               setIsDrawerOpen(false);
               handleSelected(event, 2);
             }}
-            selected={selectedIndex === 2}>
-            <ListItemText disableTypography className={classes.drawerItem}>
+            selected={selectedPosition === 2}>
+            <ListItemText
+              disableTypography
+              className={
+                selectedPosition === 2
+                  ? clsx(classes.drawerItem, classes.drawerItemSelected)
+                  : classes.drawerItem
+              }>
               Revolution
             </ListItemText>
           </ListItemButton>
@@ -144,8 +174,14 @@ const MainDrawerMenu: React.FC = () => {
               setIsDrawerOpen(false);
               handleSelected(event, 3);
             }}
-            selected={selectedIndex === 3}>
-            <ListItemText disableTypography className={classes.drawerItem}>
+            selected={selectedPosition === 3}>
+            <ListItemText
+              disableTypography
+              className={
+                selectedPosition === 3
+                  ? clsx(classes.drawerItem, classes.drawerItemSelected)
+                  : classes.drawerItem
+              }>
               About
             </ListItemText>
           </ListItemButton>
@@ -161,8 +197,14 @@ const MainDrawerMenu: React.FC = () => {
               setIsDrawerOpen(false);
               handleSelected(event, 4);
             }}
-            selected={selectedIndex === 4}>
-            <ListItemText disableTypography className={classes.drawerItem}>
+            selected={selectedPosition === 4}>
+            <ListItemText
+              disableTypography
+              className={
+                selectedPosition === 4
+                  ? clsx(classes.drawerItem, classes.drawerItemSelected)
+                  : classes.drawerItem
+              }>
               Contact Us
             </ListItemText>
           </ListItemButton>
@@ -176,15 +218,23 @@ const MainDrawerMenu: React.FC = () => {
               },
             }}
             to='/estimate'
-            selected={selectedIndex === 5}
             onClick={(event) => {
               setIsDrawerOpen(false);
               handleSelected(event, 5);
-            }}>
+            }}
+            selected={selectedPosition === 5}>
             <ListItemText
               disableTypography
-              className={clsx(classes.drawerItem, classes.estimate)}>
-              Estimate
+              className={
+                selectedPosition === 5
+                  ? clsx(
+                      classes.drawerItem,
+                      classes.estimate,
+                      classes.drawerItemSelected
+                    )
+                  : clsx(classes.drawerItem, classes.estimate)
+              }>
+              Free Estimate
             </ListItemText>
           </ListItem>
         </List>

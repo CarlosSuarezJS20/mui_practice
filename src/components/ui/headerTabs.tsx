@@ -85,21 +85,6 @@ const HeaderTabs: React.FC<HeaderTabsProps> = ({ setValueProp, position }) => {
           setValueProp(5);
         }
         break;
-      case "/customsoftware":
-        if (position != 1) {
-          setValueProp(1);
-        }
-        break;
-      case "/mobileapps":
-        if (position != 1) {
-          setValueProp(1);
-        }
-        break;
-      case "/websites":
-        if (position != 1) {
-          setValueProp(1);
-        }
-        break;
       default:
         break;
     }
@@ -187,7 +172,7 @@ const HeaderTabs: React.FC<HeaderTabsProps> = ({ setValueProp, position }) => {
         />
       </Tabs>
       <StyledButton variant='contained' color='secondary'>
-        Free Trial
+        Free estimate
       </StyledButton>
       <MenuPositionedToolTip
         id='menu-positioned-tooltip'

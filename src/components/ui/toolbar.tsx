@@ -70,11 +70,6 @@ const ToolBarCom: React.FC = () => {
           setValue(4);
         }
         break;
-      case "/estimate":
-        if (value != 5) {
-          setValue(5);
-        }
-        break;
       case "/customsoftware":
         if (value != 1) {
           setValue(1);
@@ -114,7 +109,10 @@ const ToolBarCom: React.FC = () => {
         <img src={logo} alt='company logo' className={classes.logo} />
       </Button>
       {matches ? (
-        <MainDrawerMenu />
+        <MainDrawerMenu
+          selectedValueHandler={setValueHandler}
+          selectedPosition={value}
+        />
       ) : (
         <HeaderTabs setValueProp={setValueHandler} position={value} />
       )}
