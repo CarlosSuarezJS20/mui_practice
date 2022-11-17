@@ -4,8 +4,8 @@ import ToolBarCom from "./toolbar";
 import ElevationScrolling from "./ElevationScrollAppBar";
 import { makeStyles } from "@mui/styles";
 import theme from "./theme";
-// Media query api
 
+// Media query api
 const useStyles = makeStyles(() => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
@@ -20,16 +20,42 @@ const useStyles = makeStyles(() => ({
       marginBottom: "1em",
     },
   },
+  appbar: {
+    [theme.breakpoints.down("md")]: {
+      "&.MuiAppBar-root": {
+        zIndex: theme.zIndex.modal + 1,
+      },
+    },
+  },
 }));
 
-const Header: React.FC = (props) => {
+interface ToolBarComProps {
+  routeValueHandler: {
+    routeValueHandler: (n: number) => void;
+    routeValue: number;
+  };
+  headerModalToolTipSelectedTabHandler: {
+    headerModalToolTipSelectedTabHandler: (n: number) => void;
+    toolTipSelectedTabeValue: number;
+  };
+}
+
+const Header: React.FC<ToolBarComProps> = (
+  { routeValueHandler, headerModalToolTipSelectedTabHandler },
+  props
+) => {
   const classes = useStyles();
 
   return (
     <React.Fragment>
       <ElevationScrolling {...props}>
-        <AppBar position='fixed' color='primary'>
-          <ToolBarCom />
+        <AppBar className={classes.appbar} position='fixed' color='primary'>
+          <ToolBarCom
+            headerModalToolTipSelectedTabHandler={
+              headerModalToolTipSelectedTabHandler
+            }
+            routeValueHandler={routeValueHandler}
+          />
         </AppBar>
       </ElevationScrolling>
       <div className={classes.toolbarMargin} />

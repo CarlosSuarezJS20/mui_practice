@@ -11,7 +11,7 @@ import Tab from "@mui/material/Tab";
 import { Link } from "react-router-dom";
 import MenuPositionedToolTip from "./menuToolbar";
 
-const useStyles = makeStyles(() => ({
+const useStyles: any = makeStyles(() => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
     //fix margin issue with the hidden text
@@ -40,12 +40,20 @@ const StyledButton = styled(Button)(() => ({
 }));
 
 // props
-interface HeaderTabsProps {
-  setValueProp: (pos: number) => void;
-  position: number;
+interface ToolBarComProps {
+  routeValueHandler: {
+    routeValueHandler: (n: number) => void;
+    routeValue: number;
+  };
+  headerModalToolTipSelectedTabHandler: {
+    headerModalToolTipSelectedTabHandler: (n: number) => void;
+    toolTipSelectedTabeValue: number;
+  };
 }
-
-const HeaderTabs: React.FC<HeaderTabsProps> = ({ setValueProp, position }) => {
+const HeaderTabs: React.FC<ToolBarComProps> = ({
+  routeValueHandler,
+  headerModalToolTipSelectedTabHandler,
+}) => {
   const classes = useStyles();
   // responsive rendering
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -56,42 +64,42 @@ const HeaderTabs: React.FC<HeaderTabsProps> = ({ setValueProp, position }) => {
   useEffect(() => {
     switch (window.location.pathname) {
       case "/":
-        if (position != 0) {
-          setValueProp(0);
+        if (routeValueHandler.routeValue != 0) {
+          routeValueHandler.routeValueHandler(0);
         }
         break;
       case "/services":
-        if (position != 1) {
-          setValueProp(1);
+        if (routeValueHandler.routeValue != 1) {
+          routeValueHandler.routeValueHandler(1);
         }
         break;
       case "/revolution":
-        if (position != 2) {
-          setValueProp(2);
+        if (routeValueHandler.routeValue != 2) {
+          routeValueHandler.routeValueHandler(2);
         }
         break;
       case "/about":
-        if (position != 3) {
-          setValueProp(3);
+        if (routeValueHandler.routeValue != 3) {
+          routeValueHandler.routeValueHandler(3);
         }
         break;
       case "/contact":
-        if (position != 4) {
-          setValueProp(4);
+        if (routeValueHandler.routeValue != 4) {
+          routeValueHandler.routeValueHandler(4);
         }
         break;
       case "/estimate":
-        if (position != 5) {
-          setValueProp(5);
+        if (routeValueHandler.routeValue != 5) {
+          routeValueHandler.routeValueHandler(5);
         }
         break;
       default:
         break;
     }
-  }, [position]);
+  }, [routeValueHandler.routeValue, routeValueHandler.routeValueHandler]);
 
   const onChangeHandler = (e: React.SyntheticEvent, value: number) => {
-    setValueProp(value);
+    routeValueHandler.routeValueHandler(value);
   };
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -104,15 +112,10 @@ const HeaderTabs: React.FC<HeaderTabsProps> = ({ setValueProp, position }) => {
     setOpen(false);
   };
 
-  // Helper function to set value for menu items
-  const setValueMenuItemsHandler = (menuItemIndex: number) => {
-    setValueProp(menuItemIndex);
-  };
-
   return (
     <React.Fragment>
       <Tabs
-        value={position}
+        value={routeValueHandler.routeValue}
         onChange={onChangeHandler}
         textColor='secondary'
         indicatorColor='primary'
@@ -176,12 +179,14 @@ const HeaderTabs: React.FC<HeaderTabsProps> = ({ setValueProp, position }) => {
       </StyledButton>
       <MenuPositionedToolTip
         id='menu-positioned-tooltip'
-        tabValue={position}
+        routeValueHandler={routeValueHandler}
+        headerModalToolTipSelectedTabHandler={
+          headerModalToolTipSelectedTabHandler
+        }
         menu_id='services-menu'
         open={open}
         anchorElement={anchorEl}
         closeMenu={handleClose}
-        setValueMenuItem={setValueMenuItemsHandler}
       />
     </React.Fragment>
   );

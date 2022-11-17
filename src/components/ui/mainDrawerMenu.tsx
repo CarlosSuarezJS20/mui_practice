@@ -53,17 +53,19 @@ const useStyles = makeStyles(() => ({
       },
     },
   },
+  toolBarMargin: {
+    marginTop: "60px",
+  },
 }));
 
 interface MainDrawerProps {
-  selectedValueHandler: (value_selected: number) => void;
-  selectedPosition: number;
+  routeValueHandler: {
+    routeValueHandler: (n: number) => void;
+    routeValue: number;
+  };
 }
 
-const MainDrawerMenu: React.FC<MainDrawerProps> = ({
-  selectedPosition,
-  selectedValueHandler,
-}) => {
+const MainDrawerMenu: React.FC<MainDrawerProps> = ({ routeValueHandler }) => {
   const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
   const classes = useStyles();
   // Responsive swipe on mobile
@@ -75,12 +77,13 @@ const MainDrawerMenu: React.FC<MainDrawerProps> = ({
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     selectedIndex: number
   ) => {
-    selectedValueHandler(selectedIndex);
+    routeValueHandler.routeValueHandler(selectedIndex);
   };
 
   return (
     <React.Fragment>
       <SwipeableDrawer
+        hideBackdrop
         classes={{ paper: classes.drawerMenuHolder }}
         disableBackdropTransition={!iOS}
         disableDiscovery={iOS}
@@ -91,6 +94,7 @@ const MainDrawerMenu: React.FC<MainDrawerProps> = ({
         onOpen={() => {
           setIsDrawerOpen(true);
         }}>
+        <div className={classes.toolBarMargin} />
         <List disablePadding>
           <ListItemButton
             component={Link}
@@ -105,11 +109,11 @@ const MainDrawerMenu: React.FC<MainDrawerProps> = ({
               setIsDrawerOpen(false);
               handleSelected(event, 0);
             }}
-            selected={selectedPosition === 0}>
+            selected={routeValueHandler.routeValue === 0}>
             <ListItemText
               disableTypography
               className={
-                selectedPosition === 0
+                routeValueHandler.routeValue === 0
                   ? clsx(classes.drawerItem, classes.drawerItemSelected)
                   : classes.drawerItem
               }>
@@ -128,11 +132,11 @@ const MainDrawerMenu: React.FC<MainDrawerProps> = ({
               setIsDrawerOpen(false);
               handleSelected(event, 1);
             }}
-            selected={selectedPosition === 1}>
+            selected={routeValueHandler.routeValue === 1}>
             <ListItemText
               disableTypography
               className={
-                selectedPosition === 1
+                routeValueHandler.routeValue === 1
                   ? clsx(classes.drawerItem, classes.drawerItemSelected)
                   : classes.drawerItem
               }>
@@ -151,11 +155,11 @@ const MainDrawerMenu: React.FC<MainDrawerProps> = ({
               setIsDrawerOpen(false);
               handleSelected(event, 2);
             }}
-            selected={selectedPosition === 2}>
+            selected={routeValueHandler.routeValue === 2}>
             <ListItemText
               disableTypography
               className={
-                selectedPosition === 2
+                routeValueHandler.routeValue === 2
                   ? clsx(classes.drawerItem, classes.drawerItemSelected)
                   : classes.drawerItem
               }>
@@ -174,11 +178,11 @@ const MainDrawerMenu: React.FC<MainDrawerProps> = ({
               setIsDrawerOpen(false);
               handleSelected(event, 3);
             }}
-            selected={selectedPosition === 3}>
+            selected={routeValueHandler.routeValue === 3}>
             <ListItemText
               disableTypography
               className={
-                selectedPosition === 3
+                routeValueHandler.routeValue === 3
                   ? clsx(classes.drawerItem, classes.drawerItemSelected)
                   : classes.drawerItem
               }>
@@ -197,11 +201,11 @@ const MainDrawerMenu: React.FC<MainDrawerProps> = ({
               setIsDrawerOpen(false);
               handleSelected(event, 4);
             }}
-            selected={selectedPosition === 4}>
+            selected={routeValueHandler.routeValue === 4}>
             <ListItemText
               disableTypography
               className={
-                selectedPosition === 4
+                routeValueHandler.routeValue === 4
                   ? clsx(classes.drawerItem, classes.drawerItemSelected)
                   : classes.drawerItem
               }>
@@ -222,11 +226,11 @@ const MainDrawerMenu: React.FC<MainDrawerProps> = ({
               setIsDrawerOpen(false);
               handleSelected(event, 5);
             }}
-            selected={selectedPosition === 5}>
+            selected={routeValueHandler.routeValue === 5}>
             <ListItemText
               disableTypography
               className={
-                selectedPosition === 5
+                routeValueHandler.routeValue === 5
                   ? clsx(
                       classes.drawerItem,
                       classes.estimate,

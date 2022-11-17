@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import ToolBar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
@@ -35,65 +35,24 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-// Styling the tab, need to create a
+interface ToolBarComProps {
+  routeValueHandler: {
+    routeValueHandler: (n: number) => void;
+    routeValue: number;
+  };
+  headerModalToolTipSelectedTabHandler: {
+    headerModalToolTipSelectedTabHandler: (n: number) => void;
+    toolTipSelectedTabeValue: number;
+  };
+}
 
-const ToolBarCom: React.FC = () => {
-  const [value, setValue] = React.useState(0);
+const ToolBarCom: React.FC<ToolBarComProps> = ({
+  routeValueHandler,
+  headerModalToolTipSelectedTabHandler,
+}) => {
   // Styling hooks
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const classes = useStyles();
-
-  useEffect(() => {
-    switch (window.location.pathname) {
-      case "/":
-        if (value != 0) {
-          setValue(0);
-        }
-        break;
-      case "/services":
-        if (value != 1) {
-          setValue(1);
-        }
-        break;
-      case "/revolution":
-        if (value != 2) {
-          setValue(2);
-        }
-        break;
-      case "/about":
-        if (value != 3) {
-          setValue(3);
-        }
-        break;
-      case "/contact":
-        if (value != 4) {
-          setValue(4);
-        }
-        break;
-      case "/customsoftware":
-        if (value != 1) {
-          setValue(1);
-        }
-        break;
-      case "/mobileapps":
-        if (value != 1) {
-          setValue(1);
-        }
-        break;
-      case "/websites":
-        if (value != 1) {
-          setValue(1);
-        }
-        break;
-      default:
-        break;
-    }
-  }, [value]);
-
-  // handles setValue in th tabs
-  const setValueHandler = (position: number) => {
-    setValue(position);
-  };
 
   return (
     <ToolBar disableGutters>
@@ -103,18 +62,20 @@ const ToolBarCom: React.FC = () => {
         to='/'
         disableRipple
         onClick={() => {
-          setValue(0);
+          routeValueHandler.routeValueHandler(0);
         }}
         className={classes.logoContainer}>
         <img src={logo} alt='company logo' className={classes.logo} />
       </Button>
       {matches ? (
-        <MainDrawerMenu
-          selectedValueHandler={setValueHandler}
-          selectedPosition={value}
-        />
+        <MainDrawerMenu routeValueHandler={routeValueHandler} />
       ) : (
-        <HeaderTabs setValueProp={setValueHandler} position={value} />
+        <HeaderTabs
+          headerModalToolTipSelectedTabHandler={
+            headerModalToolTipSelectedTabHandler
+          }
+          routeValueHandler={routeValueHandler}
+        />
       )}
     </ToolBar>
   );
