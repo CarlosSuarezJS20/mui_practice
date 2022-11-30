@@ -10,14 +10,13 @@ const useStyles = makeStyles(() => ({
   toolbarMargin: {
     ...theme.mixins.toolbar,
     //fix margin issue with the hidden text
-    marginBottom: "3em",
+    marginBottom: "1em",
     [theme.breakpoints.down("md")]: {
-      height: "4.5em",
-      marginBottom: "2em",
+      height: "2em",
+      marginBottom: "1em",
     },
     [theme.breakpoints.down("sm")]: {
-      height: "4em",
-      marginBottom: "1em",
+      marginBottom: "0",
     },
   },
   appbar: {

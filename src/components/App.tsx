@@ -7,6 +7,8 @@ import { CssBaseline } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./ui/footer";
 
+import HomePage from "./ui/homePage";
+
 const App: React.FC = () => {
   const [value, setValue] = React.useState(0);
   const [selectedIndex, setSelectedIndex] = React.useState(0);
@@ -82,10 +84,7 @@ const App: React.FC = () => {
           }}
         />
         <Routes>
-          <Route
-            path='/'
-            element={<div style={{ height: "2000px" }}>home</div>}
-          />
+          <Route path='/' element={<HomePage />} />
           <Route
             path='/services'
             element={<div style={{ height: "2000px" }}>services</div>}

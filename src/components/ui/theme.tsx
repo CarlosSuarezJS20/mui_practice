@@ -78,6 +78,13 @@ const theme = createTheme({
     h3: {
       fontWeight: typographyFonts.H3,
     },
+    h2: {
+      color: themePalette.ARCBLUE,
+      fontFamily: "Raleway",
+      fontSize: "2em",
+      fontWeight: 700,
+      lineHeight: 1.5,
+    },
     tab: {
       fontFamily: "Raleway",
       color: "white",

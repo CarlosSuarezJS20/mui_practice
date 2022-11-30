@@ -37,6 +37,9 @@ const StyledButton = styled(Button)(() => ({
   marginLeft: "25px",
   marginRight: "25px",
   height: "50px",
+  "&:hover": {
+    background: theme.palette.secondary.light,
+  },
 }));
 
 // props
