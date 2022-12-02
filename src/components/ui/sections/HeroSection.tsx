@@ -57,7 +57,7 @@ const HomePage: React.FC = () => {
         <Grid
           container
           justifyContent={
-            document.documentElement.clientWidth < 500 ? "center" : "flex-end"
+            document.documentElement.clientWidth < 600 ? "center" : "flex-end"
           }
           alignItems='center'>
           <Grid item sm>

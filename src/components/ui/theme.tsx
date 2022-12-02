@@ -18,12 +18,14 @@ declare module "@mui/material/styles" {
   interface TypographyVariants {
     tab: React.CSSProperties;
     estimateBtn: React.CSSProperties;
+    titles: React.CSSProperties;
   }
 
   // allow configuration using `createTheme`
   interface TypographyVariantsOptions {
     tab?: React.CSSProperties;
     estimateBtn?: React.CSSProperties;
+    titles?: React.CSSProperties;
   }
 }
 
@@ -32,6 +34,7 @@ declare module "@mui/material/Typography" {
   interface TypographyPropsVariantOverrides {
     tab: true;
     estimateBtn: true;
+    titles?: React.CSSProperties;
   }
 }
 
@@ -97,6 +100,10 @@ const theme = createTheme({
       fontSize: "1rem",
       textTransform: "none",
       color: "white",
+    },
+    titles: {
+      color: themePalette.ARCBLUE,
+      fontWeight: "bold",
     },
   },
 });
