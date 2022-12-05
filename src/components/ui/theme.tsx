@@ -6,6 +6,7 @@ import "@mui/material/styles/createPalette";
 enum themePalette {
   ARCBLUE = "#0B72B9",
   ARCORANGE = "#ff9100",
+  ARCGREY = "#868686",
 }
 
 enum typographyFonts {
@@ -42,6 +43,7 @@ declare module "@mui/material/styles/createPalette" {
   interface CommonColors {
     blue: string;
     orange: string;
+    grey: string;
   }
 }
 
@@ -75,6 +77,7 @@ const theme = createTheme({
     common: {
       blue: themePalette.ARCBLUE,
       orange: themePalette.ARCORANGE,
+      grey: themePalette.ARCGREY,
     },
   },
   typography: {
@@ -104,6 +107,7 @@ const theme = createTheme({
     titles: {
       color: themePalette.ARCBLUE,
       fontWeight: "bold",
+      fontSize: 25,
     },
   },
 });

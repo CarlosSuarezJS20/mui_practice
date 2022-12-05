@@ -10,9 +10,9 @@ import theme from "../theme";
 const useStyle = makeStyles(() => ({
   heroContainer: {
     "&.MuiGrid-root": {
-      marginTop: "3em",
+      marginTop: "2em",
       [theme.breakpoints.down("md")]: {
-        marginTop: "3em",
+        marginTop: "2em",
       },
     },
   },
@@ -56,9 +56,7 @@ const HomePage: React.FC = () => {
       <Grid item>
         <Grid
           container
-          justifyContent={
-            document.documentElement.clientWidth < 600 ? "center" : "flex-end"
-          }
+          justifyContent={{ xs: "center", md: "flex-start" }}
           alignItems='center'>
           <Grid item sm>
             <Typography align='center' variant='h2'>
