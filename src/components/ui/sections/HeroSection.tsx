@@ -1,6 +1,6 @@
 import React from "react";
 import Lottie from "react-lottie";
-import { makeStyles, useTheme } from "@mui/styles";
+import { makeStyles } from "@mui/styles";
 import { Grid, Typography, Hidden, Button } from "@mui/material";
 
 import animationData from "../../../animations/landinganimation/data";
@@ -45,7 +45,7 @@ const HomePage: React.FC = () => {
 
   const defaultOptionsLottie = {
     loop: true,
-    autoplay: true,
+    autoplay: false,
     animationData: animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
