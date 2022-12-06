@@ -12,9 +12,9 @@ import theme from "../theme";
 const useStyle = makeStyles(() => ({
   serviceContainer: {
     "&.MuiGrid-root": {
-      padding: "18em 5em 12em",
+      padding: "13em 5em 12em",
       [theme.breakpoints.down("md")]: {
-        padding: "10em 2em 9em",
+        padding: "6em 2em 9em",
       },
     },
   },
@@ -59,14 +59,8 @@ const useStyle = makeStyles(() => ({
   },
   learnMoreBtn: {
     "&.MuiButtonBase-root": {
-      marginTop: "2em",
-      borderRadius: 50,
-      height: 28,
-      textTransform: "none",
-      fontWeight: "bold",
-      width: 80,
-      fontSize: 10,
-      padding: "5px 0px",
+      ...theme.typography.learnMoreBtn,
+      marginTop: "1em",
     },
   },
 
