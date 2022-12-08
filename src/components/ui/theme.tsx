@@ -94,6 +94,10 @@ const theme = createTheme({
       fontWeight: 700,
       lineHeight: 1.5,
     },
+    h4: {
+      color: "white",
+      fontSize: 15,
+    },
     tab: {
       fontFamily: "Raleway",
       color: "white",

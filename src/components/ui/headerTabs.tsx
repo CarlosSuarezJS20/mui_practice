@@ -5,11 +5,11 @@ import theme from "./theme";
 
 // Media query api
 
-import Button from "@mui/material/Button";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Link } from "react-router-dom";
 import MenuPositionedToolTip from "./menuToolbar";
+import EstimateButton from "./aux-components/estimateButton";
 
 const useStyles: any = makeStyles(() => ({
   toolbarMargin: {
@@ -28,17 +28,6 @@ const useStyles: any = makeStyles(() => ({
       minWidth: 10,
       marginLeft: "25px",
     },
-  },
-}));
-
-const StyledButton = styled(Button)(() => ({
-  ...theme.typography.estimateBtn,
-  borderRadius: "50px",
-  marginLeft: "25px",
-  marginRight: "25px",
-  height: "50px",
-  "&:hover": {
-    background: theme.palette.secondary.light,
   },
 }));
 
@@ -177,9 +166,7 @@ const HeaderTabs: React.FC<ToolBarComProps> = ({
           aria-expanded={open ? "true" : undefined}
         />
       </Tabs>
-      <StyledButton variant='contained' color='secondary'>
-        Free estimate
-      </StyledButton>
+      <EstimateButton routeValueHandler={routeValueHandler.routeValueHandler} />
       <MenuPositionedToolTip
         id='menu-positioned-tooltip'
         routeValueHandler={routeValueHandler}

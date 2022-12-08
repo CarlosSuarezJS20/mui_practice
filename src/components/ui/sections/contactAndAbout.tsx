@@ -22,6 +22,9 @@ const useStyle = makeStyles(() => ({
       marginTop: "0.5em",
       color: "white",
       border: "1px solid white",
+      "&:hover": {
+        border: "1.5px solid white",
+      },
     },
   },
   aboutandcontacttitles: {

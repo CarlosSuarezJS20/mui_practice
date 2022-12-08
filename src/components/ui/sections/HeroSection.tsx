@@ -1,11 +1,13 @@
 import React from "react";
 import Lottie from "react-lottie";
 import { makeStyles } from "@mui/styles";
-import { Grid, Typography, Hidden, Button } from "@mui/material";
+import { Grid, Typography, Hidden } from "@mui/material";
 
 import animationData from "../../../animations/landinganimation/data";
-import ArrowComponent from "../ArrowComponent";
+
 import theme from "../theme";
+import EstimateButton from "../aux-components/estimateButton";
+import LearnMoreButton from "../aux-components/learnMoreButton";
 
 const useStyle = makeStyles(() => ({
   heroContainer: {
@@ -16,31 +18,13 @@ const useStyle = makeStyles(() => ({
       },
     },
   },
-
-  esttimateBtn: {
-    "&.MuiButtonBase-root": {
-      ...theme.typography.estimateBtn,
-      backgroundColor: theme.palette.common.orange,
-      borderRadius: 50,
-      height: 45,
-      width: 145,
-      "&:hover": {
-        background: theme.palette.secondary.light,
-      },
-    },
-  },
-  learnMoreBtn: {
-    "&.MuiButtonBase-root": {
-      borderRadius: 50,
-      height: 45,
-      textTransform: "none",
-      fontWeight: "bold",
-      width: 145,
-    },
-  },
 }));
 
-const HomePage: React.FC = () => {
+interface HeroProps {
+  routerValueHandler: (n: number) => void;
+}
+
+const HomePage: React.FC<HeroProps> = ({ routerValueHandler }) => {
   const classes = useStyle();
 
   const defaultOptionsLottie = {
@@ -68,19 +52,16 @@ const HomePage: React.FC = () => {
               justifyContent='center'
               spacing={2}>
               <Grid item>
-                <Button className={classes.esttimateBtn} variant='contained'>
-                  Free Estimate
-                </Button>
+                <EstimateButton routeValueHandler={routerValueHandler} />
               </Grid>
               <Grid item>
-                <Button variant='outlined' className={classes.learnMoreBtn}>
-                  <span style={{ marginRight: 10 }}>Learn more</span>
-                  <ArrowComponent
-                    width={15}
-                    height={15}
-                    fill={theme.palette.common.blue}
-                  />
-                </Button>
+                <LearnMoreButton
+                  routeValueHandler={routerValueHandler}
+                  path='/services'
+                  routeValue={1}
+                  height={45}
+                  width={145}
+                />
               </Grid>
             </Grid>
           </Grid>

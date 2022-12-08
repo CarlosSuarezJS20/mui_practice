@@ -1,16 +1,29 @@
 import React from "react";
 import ContactAndAboutSection from "./sections/contactAndAbout";
 import HeroSection from "./sections/HeroSection";
-import ServicesPage from "./sections/servicesSection";
+import ServicesSection from "./sections/servicesSection";
 import RevolutionSection from "./sections/theRevolution";
+import CallToActionSection from "./sections/callToAction";
 
-const HomePage: React.FC = () => {
+interface HomeProps {
+  routerValueHandler: (n: number) => void;
+  toolTipValueHandler: (n: number | undefined) => void;
+}
+
+const HomePage: React.FC<HomeProps> = ({
+  routerValueHandler,
+  toolTipValueHandler,
+}) => {
   return (
     <React.Fragment>
-      <HeroSection />
-      <ServicesPage />
+      <HeroSection routerValueHandler={routerValueHandler} />
+      <ServicesSection
+        routeValueHandler={routerValueHandler}
+        toolTipValueHandler={toolTipValueHandler}
+      />
       <RevolutionSection />
       <ContactAndAboutSection />
+      <CallToActionSection routerValueHandler={routerValueHandler} />
     </React.Fragment>
   );
 };

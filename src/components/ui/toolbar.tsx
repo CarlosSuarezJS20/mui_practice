@@ -56,7 +56,6 @@ const ToolBarCom: React.FC<ToolBarComProps> = ({
 
   return (
     <ToolBar disableGutters>
-      {/* <Typography variant='h3'>Arc Development</Typography> */}
       <Button
         component={Link}
         to='/'

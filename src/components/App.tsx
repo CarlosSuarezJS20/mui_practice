@@ -40,6 +40,11 @@ const App: React.FC = () => {
           setValue(4);
         }
         break;
+      case "/estimate":
+        if (value != 5) {
+          setValue(5);
+        }
+        break;
       case "/customsoftware":
         if (value != 1) {
           setValue(1);
@@ -64,8 +69,8 @@ const App: React.FC = () => {
     setValue(n);
   };
 
-  const headerModalToolTipSelectedTabHandler = (n: number) => {
-    setSelectedIndex(n);
+  const headerModalToolTipSelectedTabHandler = (n: number | undefined) => {
+    setSelectedIndex(n!);
   };
 
   return (
@@ -84,7 +89,15 @@ const App: React.FC = () => {
           }}
         />
         <Routes>
-          <Route path='/' element={<HomePage />} />
+          <Route
+            path='/'
+            element={
+              <HomePage
+                routerValueHandler={routeValueHandler}
+                toolTipValueHandler={headerModalToolTipSelectedTabHandler}
+              />
+            }
+          />
           <Route
             path='/services'
             element={<div style={{ height: "2000px" }}>services</div>}

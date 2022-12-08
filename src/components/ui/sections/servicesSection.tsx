@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@mui/styles";
 import { Grid, Typography, Button } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import LearnMoreButton from "../aux-components/learnMoreButton";
 import ArrowComponent from "../ArrowComponent";
 import customSoftwareIcon from "../../../assets/Custom Software Icon.svg";
 import mobileAppsIcon from "../../../assets/mobileIcon.svg";
@@ -69,13 +70,20 @@ const useStyle = makeStyles(() => ({
   },
 }));
 
-const ServicesPage: React.FC = () => {
+interface ServiceSectionProps {
+  routeValueHandler: (n: number) => void;
+  toolTipValueHandler: (n: number | undefined) => void;
+}
+
+const ServicesSection: React.FC<ServiceSectionProps> = ({
+  routeValueHandler,
+  toolTipValueHandler,
+}) => {
   const classes = useStyle();
   const matches = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <Grid container direction='column' className={classes.serviceContainer}>
-      {/* Custome Sorfware services section */}
       <Grid
         container
         className={classes.serviceSection}
@@ -102,14 +110,17 @@ const ServicesPage: React.FC = () => {
               calibration
             </span>
           </Typography>
-          <Button variant='outlined' className={classes.learnMoreBtn}>
-            <span>Learn more</span>
-            <ArrowComponent
-              width={10}
-              height={10}
-              fill={theme.palette.common.blue}
+          <div style={{ marginTop: "0.5em" }}>
+            <LearnMoreButton
+              routeValueHandler={routeValueHandler}
+              routeValue={1}
+              toolTipValueHandler={toolTipValueHandler}
+              toolTipValue={1}
+              path={"/customsoftware"}
+              height={35}
+              width={130}
             />
-          </Button>
+          </div>
         </Grid>
         <Grid item>
           <img
@@ -138,14 +149,17 @@ const ServicesPage: React.FC = () => {
             {matches ? null : <br />}
             with either mobile platform.
           </Typography>
-          <Button variant='outlined' className={classes.learnMoreBtn}>
-            <span>Learn more</span>
-            <ArrowComponent
-              width={10}
-              height={10}
-              fill={theme.palette.common.blue}
+          <div style={{ marginTop: "0.5em" }}>
+            <LearnMoreButton
+              routeValueHandler={routeValueHandler}
+              path='/mobileapps'
+              routeValue={1}
+              toolTipValueHandler={toolTipValueHandler}
+              toolTipValue={2}
+              height={35}
+              width={130}
             />
-          </Button>
+          </div>
         </Grid>
         <Grid item>
           <img
@@ -171,14 +185,17 @@ const ServicesPage: React.FC = () => {
           <Typography className={classes.servicesPunchLine}>
             Optimized for search engines, build for speed.
           </Typography>
-          <Button variant='outlined' className={classes.learnMoreBtn}>
-            <span>Learn more</span>
-            <ArrowComponent
-              width={10}
-              height={10}
-              fill={theme.palette.common.blue}
+          <div style={{ marginTop: "0.5em" }}>
+            <LearnMoreButton
+              routeValueHandler={routeValueHandler}
+              path='/websites'
+              routeValue={1}
+              toolTipValueHandler={toolTipValueHandler}
+              toolTipValue={3}
+              height={35}
+              width={130}
             />
-          </Button>
+          </div>
         </Grid>
         <Grid item>
           <img
@@ -192,4 +209,4 @@ const ServicesPage: React.FC = () => {
   );
 };
 
-export default ServicesPage;
+export default ServicesSection;
