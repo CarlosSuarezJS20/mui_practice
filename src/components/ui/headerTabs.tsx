@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { makeStyles } from "@mui/styles";
-import { styled } from "@mui/material/styles";
 import theme from "./theme";
 
 // Media query api

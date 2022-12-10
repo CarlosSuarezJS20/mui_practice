@@ -8,6 +8,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./ui/footer";
 
 import HomePage from "./ui/homePage";
+import ServicesPage from "./ui/servicesPage";
+import CustomDevelopmentPage from "./ui/customeSoftwarePage";
 
 const App: React.FC = () => {
   const [value, setValue] = React.useState(0);
@@ -100,11 +102,21 @@ const App: React.FC = () => {
           />
           <Route
             path='/services'
-            element={<div style={{ height: "2000px" }}>services</div>}
+            element={
+              <ServicesPage
+                routerValueHandler={routeValueHandler}
+                toolTipValueHandler={headerModalToolTipSelectedTabHandler}
+              />
+            }
           />
           <Route
             path='/customsoftware'
-            element={<div style={{ height: "2000px" }}>custom software</div>}
+            element={
+              <CustomDevelopmentPage
+                toolTipValueHandler={headerModalToolTipSelectedTabHandler}
+                toolTipValue={selectedIndex}
+              />
+            }
           />
           <Route
             path='/mobileapps'

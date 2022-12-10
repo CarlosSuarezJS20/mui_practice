@@ -119,12 +119,10 @@ const theme = createTheme({
 
     learnMoreBtn: {
       borderRadius: 50,
-      height: 28,
       textTransform: "none",
-      fontWeight: "bold",
-      width: 80,
-      fontSize: 10,
-      padding: "5px 0px",
+      fontSize: 15,
+      padding: "5px 10px",
+      border: "2px solid",
     },
   },
 });

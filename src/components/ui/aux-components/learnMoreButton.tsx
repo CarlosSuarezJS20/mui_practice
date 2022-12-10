@@ -7,11 +7,8 @@ import { Link } from "react-router-dom";
 const useStyle = makeStyles(() => ({
   learnMoreBtn: {
     "&.MuiButtonBase-root": {
-      borderRadius: 50,
-      //   height: 45,
-      textTransform: "none",
+      ...theme.typography.learnMoreBtn,
       fontWeight: "bold",
-      //   width: 145,
     },
   },
 }));

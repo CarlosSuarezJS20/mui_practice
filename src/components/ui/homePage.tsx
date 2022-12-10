@@ -1,9 +1,9 @@
 import React from "react";
-import ContactAndAboutSection from "./sections/contactAndAbout";
-import HeroSection from "./sections/HeroSection";
-import ServicesSection from "./sections/servicesSection";
-import RevolutionSection from "./sections/theRevolution";
-import CallToActionSection from "./sections/callToAction";
+import ContactAndAboutSection from "./homepage-sections/contactAndAbout";
+import HeroSection from "./homepage-sections/HeroSection";
+import ServicesSection from "./homepage-sections/servicesSection";
+import RevolutionSection from "./homepage-sections/theRevolution";
+import CallToActionSection from "./homepage-sections/callToAction";
 
 interface HomeProps {
   routerValueHandler: (n: number) => void;

@@ -1,9 +1,8 @@
 import React from "react";
 import { makeStyles } from "@mui/styles";
-import { Grid, Typography, Button } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import LearnMoreButton from "../aux-components/learnMoreButton";
-import ArrowComponent from "../ArrowComponent";
 import customSoftwareIcon from "../../../assets/Custom Software Icon.svg";
 import mobileAppsIcon from "../../../assets/mobileIcon.svg";
 import websitesIcon from "../../../assets/websiteIcon.svg";
@@ -13,9 +12,9 @@ import theme from "../theme";
 const useStyle = makeStyles(() => ({
   serviceContainer: {
     "&.MuiGrid-root": {
-      padding: "13em 5em 12em",
+      padding: "18em 5em 12em",
       [theme.breakpoints.down("md")]: {
-        padding: "6em 2em 9em",
+        padding: "9em 2em 9em",
       },
     },
   },
