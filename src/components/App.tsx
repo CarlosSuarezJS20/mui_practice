@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import Header from "./ui/header";
 import { ThemeProvider } from "@mui/material/styles";
 
@@ -6,10 +6,10 @@ import theme from "./ui/theme";
 import { CssBaseline } from "@mui/material";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from "./ui/footer";
-
 import HomePage from "./ui/homePage";
-import ServicesPage from "./ui/servicesPage";
-import CustomDevelopmentPage from "./ui/customeSoftwarePage";
+
+const ServicesPage = lazy(() => import("./ui/servicesPage"));
+const CustomDevelopmentPage = lazy(() => import("./ui/customeSoftwarePage"));
 
 const App: React.FC = () => {
   const [value, setValue] = React.useState(0);
@@ -90,59 +90,61 @@ const App: React.FC = () => {
             toolTipSelectedTabeValue: selectedIndex,
           }}
         />
-        <Routes>
-          <Route
-            path='/'
-            element={
-              <HomePage
-                routerValueHandler={routeValueHandler}
-                toolTipValueHandler={headerModalToolTipSelectedTabHandler}
-              />
-            }
-          />
-          <Route
-            path='/services'
-            element={
-              <ServicesPage
-                routerValueHandler={routeValueHandler}
-                toolTipValueHandler={headerModalToolTipSelectedTabHandler}
-              />
-            }
-          />
-          <Route
-            path='/customsoftware'
-            element={
-              <CustomDevelopmentPage
-                toolTipValueHandler={headerModalToolTipSelectedTabHandler}
-                toolTipValue={selectedIndex}
-              />
-            }
-          />
-          <Route
-            path='/mobileapps'
-            element={<div style={{ height: "2000px" }}>mobile apps</div>}
-          />
-          <Route
-            path='/websites'
-            element={<div style={{ height: "2000px" }}>websites</div>}
-          />
-          <Route
-            path='/revolution'
-            element={<div style={{ height: "2000px" }}>revolution</div>}
-          />
-          <Route
-            path='/about'
-            element={<div style={{ height: "2000px" }}>about</div>}
-          />
-          <Route
-            path='/contact'
-            element={<div style={{ height: "2000px" }}>contact</div>}
-          />
-          <Route
-            path='/estimate'
-            element={<div style={{ height: "2000px" }}>estimate</div>}
-          />
-        </Routes>
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Routes>
+            <Route
+              path='/'
+              element={
+                <HomePage
+                  routerValueHandler={routeValueHandler}
+                  toolTipValueHandler={headerModalToolTipSelectedTabHandler}
+                />
+              }
+            />
+            <Route
+              path='/services'
+              element={
+                <ServicesPage
+                  routerValueHandler={routeValueHandler}
+                  toolTipValueHandler={headerModalToolTipSelectedTabHandler}
+                />
+              }
+            />
+            <Route
+              path='/customsoftware'
+              element={
+                <CustomDevelopmentPage
+                  toolTipValueHandler={headerModalToolTipSelectedTabHandler}
+                  toolTipValue={selectedIndex}
+                />
+              }
+            />
+            <Route
+              path='/mobileapps'
+              element={<div style={{ height: "2000px" }}>mobile apps</div>}
+            />
+            <Route
+              path='/websites'
+              element={<div style={{ height: "2000px" }}>websites</div>}
+            />
+            <Route
+              path='/revolution'
+              element={<div style={{ height: "2000px" }}>revolution</div>}
+            />
+            <Route
+              path='/about'
+              element={<div style={{ height: "2000px" }}>about</div>}
+            />
+            <Route
+              path='/contact'
+              element={<div style={{ height: "2000px" }}>contact</div>}
+            />
+            <Route
+              path='/estimate'
+              element={<div style={{ height: "2000px" }}>estimate</div>}
+            />
+          </Routes>
+        </Suspense>
         <Footer
           routeValueHandler={{
             routeValueHandler: routeValueHandler,
