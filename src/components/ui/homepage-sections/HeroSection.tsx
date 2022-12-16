@@ -35,6 +35,7 @@ const HomePage: React.FC<HeroProps> = ({ routerValueHandler }) => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+
   return (
     <Grid container direction='column' className={classes.heroContainer}>
       <Grid item>
