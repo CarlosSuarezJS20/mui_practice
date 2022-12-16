@@ -3,6 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import ToolBarCom from "./toolbar";
 import ElevationScrolling from "./ElevationScrollAppBar";
 import { makeStyles } from "@mui/styles";
+
 import theme from "./theme";
 
 // Media query api
