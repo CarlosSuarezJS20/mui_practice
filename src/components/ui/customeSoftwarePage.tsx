@@ -10,6 +10,9 @@ import cash from "../../assets/cash.svg";
 
 import documentsData from "../../animations/documentsAnimation/data";
 import scaleData from "../../animations/scaleAnimation/data.json";
+import automationData from "../../animations/automationAnimation/data.json";
+import uxAutomationData from "../../animations/uxAnimation/data";
+import roots from "../../assets/root.svg";
 import Lottie from "react-lottie";
 
 import theme from "./theme";
@@ -36,7 +39,10 @@ const useStyle = makeStyles(() => ({
 
   paragraph: {
     "&.MuiTypography-root": {
-      fontSize: 12,
+      fontSize: 14,
+      [theme.breakpoints.down("md")]: {
+        fontSize: 16,
+      },
     },
   },
   imageIconBulb: {
@@ -47,6 +53,12 @@ const useStyle = makeStyles(() => ({
   },
   imageIcon: {
     width: "40px",
+  },
+  roots: {
+    width: "400px",
+    [theme.breakpoints.down("sm")]: {
+      width: "300px",
+    },
   },
 }));
 
@@ -81,11 +93,29 @@ const CustomDevelopmentPage: React.FC<CustomDevelopmentPageProps> = ({
     },
   };
 
+  const automationOptionsLottie = {
+    loop: true,
+    autoplay: true,
+    animationData: automationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
+  const uxOptionsLottie = {
+    loop: true,
+    autoplay: true,
+    animationData: uxAutomationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
   return (
     <Grid
       container
       direction='column'
-      rowSpacing={20}
+      rowSpacing={{ padding: matches ? "1.5em" : 20 }}
       sx={{ padding: matches ? "1.5em" : "3em" }}>
       <Grid item sx={{ marginBottom: "2em" }}>
         <Grid container justifyContent='space-between'>
@@ -163,7 +193,8 @@ const CustomDevelopmentPage: React.FC<CustomDevelopmentPageProps> = ({
                 <Grid
                   container
                   direction='column'
-                  sx={{ maxWidth: matchesmd ? "20em" : "10em" }}>
+                  sx={{ maxWidth: matchesmd ? "20em" : "10em" }}
+                  textAlign={matches ? "center" : "right"}>
                   <Grid item>
                     <Typography className={classes.titleService}>
                       Digital Documents & Data
@@ -190,19 +221,21 @@ const CustomDevelopmentPage: React.FC<CustomDevelopmentPageProps> = ({
           </Grid>
           <Grid item>
             <Grid container direction={matches ? "column" : "row"}>
-              <Grid item md>
-                <Lottie
-                  options={scaleOptionsLottie}
-                  style={{ maxHeight: 150, maxWidth: 150 }}
-                />
-              </Grid>
+              {matches ? null : (
+                <Grid item md>
+                  <Lottie
+                    options={scaleOptionsLottie}
+                    style={{ maxHeight: 150, maxWidth: 150 }}
+                  />
+                </Grid>
+              )}
               <Grid item md>
                 <Grid
                   container
-                  justifyContent='flext-start'
-                  alignItems='flex-end'
+                  justifyContent={matches ? "center" : "flext-start"}
+                  alignItems={matches ? "center" : "flex-end"}
                   direction='column'
-                  textAlign='right'
+                  textAlign={matches ? "center" : "right"}
                   sx={{ maxWidth: matchesmd ? "20em" : "15em" }}>
                   <Grid item>
                     <Typography className={classes.titleService}>
@@ -218,6 +251,14 @@ const CustomDevelopmentPage: React.FC<CustomDevelopmentPageProps> = ({
                   </Grid>
                 </Grid>
               </Grid>
+              {matches ? (
+                <Grid item md>
+                  <Lottie
+                    options={scaleOptionsLottie}
+                    style={{ maxHeight: 150, maxWidth: 150 }}
+                  />
+                </Grid>
+              ) : null}
             </Grid>
           </Grid>
         </Grid>
@@ -267,6 +308,130 @@ const CustomDevelopmentPage: React.FC<CustomDevelopmentPageProps> = ({
               <Grid item>
                 <img className={classes.imageIconMoney} src={cash} alt='cash' />
               </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid
+        container
+        direction='column'
+        textAlign='center'
+        justifyContent='center'
+        alignItems='center'>
+        <Grid item>
+          <img className={classes.roots} src={roots} alt='roots' />
+        </Grid>
+        <Grid item sx={{ marginBottom: "5em" }}>
+          <Grid container direction='column' width='25em' textAlign='center'>
+            <Grid item>
+              <Typography className={classes.titleService}>
+                Root-Cause Analysis
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography paragraph>
+                Many problems are merely symptoms of larger, underlying issues.
+              </Typography>
+            </Grid>
+            <Grid item>
+              <Typography paragraph>
+                We can help you thoroughly examine all areas of your business to
+                develop a holistic plan for the most effective implementation of
+                technology.
+              </Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        <Grid
+          container
+          justifyContent='space-between'
+          alignItems={matchesmd ? "center" : "inherit"}
+          rowSpacing={10}
+          direction={matchesmd ? "column" : "row"}>
+          <Grid item>
+            <Grid container direction={matches ? "column" : "row"}>
+              <Grid item>
+                <Grid
+                  container
+                  direction='column'
+                  sx={{ maxWidth: matchesmd ? "20em" : "10em" }}
+                  textAlign={matches ? "center" : "right"}>
+                  <Grid item>
+                    <Typography className={classes.titleService}>
+                      Automation
+                    </Typography>
+                    <Typography className={classes.paragraph} paragraph>
+                      Why waste time when you don’t have to?
+                    </Typography>
+                    <Typography className={classes.paragraph} paragraph>
+                      We can help you identify processes with time or event
+                      based actions which can now easily be automated.
+                    </Typography>
+                    <Typography className={classes.paragraph} paragraph>
+                      Increasing efficiency increases profits, leaving you more
+                      time to focus on your business, not busywork.
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid item>
+                <Lottie
+                  options={automationOptionsLottie}
+                  style={{ maxHeight: 230, maxWidth: 250, minHeight: 230 }}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction={matches ? "column" : "row"}>
+              {matches ? null : (
+                <Grid item md>
+                  <Lottie
+                    options={uxOptionsLottie}
+                    style={{ maxHeight: 240, maxWidth: 120 }}
+                  />
+                </Grid>
+              )}
+              <Grid item md>
+                <Grid
+                  container
+                  justifyContent={matches ? "center" : "flext-start"}
+                  alignItems={matches ? "center" : "flex-end"}
+                  direction='column'
+                  textAlign={matches ? "center" : "right"}
+                  sx={{ maxWidth: matchesmd ? "20em" : "15em" }}>
+                  <Grid item>
+                    <Typography className={classes.titleService}>
+                      User Experience Design
+                    </Typography>
+                  </Grid>
+                  <Grid item>
+                    <Typography className={classes.paragraph} paragraph>
+                      A good design that isn’t usable isn’t a good design.
+                    </Typography>
+                    <Typography className={classes.paragraph} paragraph>
+                      So why are so many pieces of software complicated,
+                      confusing, and frustrating?
+                    </Typography>
+                    <Typography className={classes.paragraph} paragraph>
+                      By prioritizing users and the real ways they interact with
+                      technology we’re able to develop unique, personable
+                      experiences that solve problems rather than create new
+                      ones.
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+              {matches ? (
+                <Grid item md>
+                  <Lottie
+                    options={uxOptionsLottie}
+                    style={{ maxHeight: 150, maxWidth: 150 }}
+                  />
+                </Grid>
+              ) : null}
             </Grid>
           </Grid>
         </Grid>
