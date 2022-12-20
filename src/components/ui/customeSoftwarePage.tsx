@@ -263,55 +263,6 @@ const CustomDevelopmentPage: React.FC<CustomDevelopmentPageProps> = ({
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
-        <Grid
-          sx={{ marginTop: "1.2em", height: matches ? "250px" : "300px" }}
-          container
-          justifyContent={"center"}
-          spacing={matches ? 2 : 3}
-          alignItems={matches ? "center" : "flex-start"}>
-          <Grid item>
-            <Grid container direction='column' textAlign='center'>
-              <Grid item>
-                <Typography className={classes.subtitle}>
-                  Save Energy
-                </Typography>
-              </Grid>
-              <Grid item>
-                <img
-                  className={classes.imageIconBulb}
-                  src={lightbulb}
-                  alt='light bulb'
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item>
-            <Grid container direction='column' textAlign='center'>
-              <Grid item>
-                <Typography className={classes.subtitle}>Save Time</Typography>
-              </Grid>
-              <Grid item>
-                <img
-                  className={classes.imageIcon}
-                  src={stopWatch}
-                  alt='stop watch'
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item>
-            <Grid container direction='column' textAlign='center'>
-              <Grid item>
-                <Typography className={classes.subtitle}>Save Money</Typography>
-              </Grid>
-              <Grid item>
-                <img className={classes.imageIconMoney} src={cash} alt='cash' />
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
       <Grid
         container
         direction='column'
@@ -428,10 +379,59 @@ const CustomDevelopmentPage: React.FC<CustomDevelopmentPageProps> = ({
                 <Grid item md>
                   <Lottie
                     options={uxOptionsLottie}
-                    style={{ maxHeight: 150, maxWidth: 150 }}
+                    style={{ maxHeight: 300, maxWidth: 150 }}
                   />
                 </Grid>
               ) : null}
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid item>
+        <Grid
+          sx={{ marginTop: "1.2em", height: matches ? "250px" : "300px" }}
+          container
+          justifyContent={"center"}
+          spacing={matches ? 2 : 3}
+          alignItems={matches ? "center" : "flex-start"}>
+          <Grid item>
+            <Grid container direction='column' textAlign='center'>
+              <Grid item>
+                <Typography className={classes.subtitle}>
+                  Save Energy
+                </Typography>
+              </Grid>
+              <Grid item>
+                <img
+                  className={classes.imageIconBulb}
+                  src={lightbulb}
+                  alt='light bulb'
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction='column' textAlign='center'>
+              <Grid item>
+                <Typography className={classes.subtitle}>Save Time</Typography>
+              </Grid>
+              <Grid item>
+                <img
+                  className={classes.imageIcon}
+                  src={stopWatch}
+                  alt='stop watch'
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Grid container direction='column' textAlign='center'>
+              <Grid item>
+                <Typography className={classes.subtitle}>Save Money</Typography>
+              </Grid>
+              <Grid item>
+                <img className={classes.imageIconMoney} src={cash} alt='cash' />
+              </Grid>
             </Grid>
           </Grid>
         </Grid>

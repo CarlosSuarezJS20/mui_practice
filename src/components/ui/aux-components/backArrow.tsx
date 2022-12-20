@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@mui/styles";
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
-import backArrowDisabled from "../../../assets/backArrowDisabled.svg";
 import backArrow from "../../../assets/backArrow.svg";
 
 const useStyle = makeStyles(() => ({}));
@@ -19,7 +18,7 @@ const BackArrow: React.FC<BackArrowProps> = ({
   serviceIndexPosition,
 }) => {
   const classes = useStyle();
-  const routes = ["/services", "/customsorftware", "/mobileapps", "/websites"];
+  const routes = ["/services", "/customsoftware", "/mobileapps", "/websites"];
 
   return (
     <Button

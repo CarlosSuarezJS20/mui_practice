@@ -183,7 +183,7 @@ const ServicesPage: React.FC<ServicePageProps> = ({
 
             <Grid item className={classes.serviceBtnHolder}>
               <LearnMoreButton
-                path='/customsoftware'
+                path='/mobileapps'
                 routeValueHandler={routerValueHandler}
                 toolTipValueHandler={toolTipValueHandler}
                 toolTipValue={2}
@@ -241,7 +241,7 @@ const ServicesPage: React.FC<ServicePageProps> = ({
 
             <Grid item className={classes.serviceBtnHolder}>
               <LearnMoreButton
-                path='/customsoftware'
+                path='/websites'
                 routeValueHandler={routerValueHandler}
                 toolTipValueHandler={toolTipValueHandler}
                 toolTipValue={3}

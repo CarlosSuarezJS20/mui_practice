@@ -10,6 +10,8 @@ import HomePage from "./ui/homePage";
 
 const ServicesPage = lazy(() => import("./ui/servicesPage"));
 const CustomDevelopmentPage = lazy(() => import("./ui/customeSoftwarePage"));
+const IosAndroidAppDev = lazy(() => import("./ui/iosAndroidAppDev"));
+const WebsitesPage = lazy(() => import("./ui/websitesPage"));
 
 const App: React.FC = () => {
   const [value, setValue] = React.useState(0);
@@ -121,11 +123,21 @@ const App: React.FC = () => {
             />
             <Route
               path='/mobileapps'
-              element={<div style={{ height: "2000px" }}>mobile apps</div>}
+              element={
+                <IosAndroidAppDev
+                  toolTipValueHandler={headerModalToolTipSelectedTabHandler}
+                  toolTipValue={selectedIndex}
+                />
+              }
             />
             <Route
               path='/websites'
-              element={<div style={{ height: "2000px" }}>websites</div>}
+              element={
+                <WebsitesPage
+                  toolTipValueHandler={headerModalToolTipSelectedTabHandler}
+                  toolTipValue={selectedIndex}
+                />
+              }
             />
             <Route
               path='/revolution'
