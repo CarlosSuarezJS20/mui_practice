@@ -12,6 +12,7 @@ const ServicesPage = lazy(() => import("./ui/servicesPage"));
 const CustomDevelopmentPage = lazy(() => import("./ui/customeSoftwarePage"));
 const IosAndroidAppDev = lazy(() => import("./ui/iosAndroidAppDev"));
 const WebsitesPage = lazy(() => import("./ui/websitesPage"));
+const TheRevolutionPage = lazy(() => import("./ui/theRevolution"));
 
 const App: React.FC = () => {
   const [value, setValue] = React.useState(0);
@@ -141,7 +142,9 @@ const App: React.FC = () => {
             />
             <Route
               path='/revolution'
-              element={<div style={{ height: "2000px" }}>revolution</div>}
+              element={
+                <TheRevolutionPage routerValueHandler={routeValueHandler} />
+              }
             />
             <Route
               path='/about'

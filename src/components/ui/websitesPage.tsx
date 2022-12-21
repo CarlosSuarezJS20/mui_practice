@@ -52,12 +52,12 @@ const IosAndroidAppPage: React.FC<CustomDevelopmentPageProps> = ({
     <Grid
       container
       direction='column'
-      sx={{ padding: matchesSml ? "1em" : "3em" }}>
+      sx={{ padding: matchesSml ? "1em" : "2em 4em" }}>
       <Grid item className={classes.rowSection}>
         <Grid
           container
           alignItems={matchesMd ? "flex-start" : "initial"}
-          justifyContent={matchesMd ? "center" : "space-between"}>
+          justifyContent={"space-between"}>
           <Grid item>
             <Grid container>
               <Grid item>
@@ -72,8 +72,7 @@ const IosAndroidAppPage: React.FC<CustomDevelopmentPageProps> = ({
                   direction='column'
                   sx={{
                     width: matchesSml ? "17em" : matchesMd ? "25em" : "35em",
-                  }}
-                  textAlign={matchesMd ? "center" : "initial"}>
+                  }}>
                   <Typography className={classes.titleService}>
                     Website Development
                   </Typography>
@@ -102,8 +101,13 @@ const IosAndroidAppPage: React.FC<CustomDevelopmentPageProps> = ({
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
-        <Grid container justifyContent='flex-start' alignItems='center'>
+      <Grid item sx={{ marginBottom: "5em", padding: "0 2em" }}>
+        <Grid
+          container
+          direction={matchesMd ? "column" : "row"}
+          justifyContent={matchesMd ? "center" : "initial"}
+          alignItems={matchesMd ? "center" : "initial"}
+          textAlign={matchesMd ? "center" : "initial"}>
           <Grid item>
             <Grid container direction='column'>
               <Grid item>
@@ -125,8 +129,13 @@ const IosAndroidAppPage: React.FC<CustomDevelopmentPageProps> = ({
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
-        <Grid container justifyContent='flex-end' alignItems='center'>
+      <Grid item sx={{ marginBottom: "5em", padding: "0 2em" }}>
+        <Grid
+          container
+          direction={matchesMd ? "column" : "row"}
+          justifyContent={matchesMd ? "center" : "flex-end"}
+          alignItems={matchesMd ? "center" : "initial"}
+          textAlign={matchesMd ? "center" : "initial"}>
           <Grid item>
             <Grid container direction='column'>
               <Grid item>
@@ -150,8 +159,13 @@ const IosAndroidAppPage: React.FC<CustomDevelopmentPageProps> = ({
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
-        <Grid container justifyContent='flex-start' alignItems='center'>
+      <Grid item sx={{ marginBottom: "5em", padding: "0 2em" }}>
+        <Grid
+          container
+          direction={matchesMd ? "column" : "row"}
+          justifyContent={matchesMd ? "center" : "flex-start"}
+          alignItems={matchesMd ? "center" : "initial"}
+          textAlign={matchesMd ? "center" : "initial"}>
           <Grid item>
             <Grid container direction='column'>
               <Grid item>
@@ -173,8 +187,13 @@ const IosAndroidAppPage: React.FC<CustomDevelopmentPageProps> = ({
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
-        <Grid container justifyContent='flex-end' alignItems='center'>
+      <Grid item sx={{ padding: "0 2em" }}>
+        <Grid
+          container
+          direction={matchesMd ? "column" : "row"}
+          justifyContent={matchesMd ? "center" : "flex-end"}
+          alignItems={matchesMd ? "center" : "initial"}
+          textAlign={matchesMd ? "center" : "initial"}>
           <Grid item>
             <Grid container direction='column'>
               <Grid item>

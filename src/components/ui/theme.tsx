@@ -21,6 +21,7 @@ declare module "@mui/material/styles" {
     estimateBtn: React.CSSProperties;
     titles: React.CSSProperties;
     learnMoreBtn: React.CSSProperties;
+    revolutionTitle: React.CSSProperties;
   }
 
   // allow configuration using `createTheme`
@@ -29,6 +30,7 @@ declare module "@mui/material/styles" {
     estimateBtn?: React.CSSProperties;
     titles?: React.CSSProperties;
     learnMoreBtn?: React.CSSProperties;
+    revolutionTitle?: React.CSSProperties;
   }
 }
 
@@ -39,6 +41,7 @@ declare module "@mui/material/Typography" {
     estimateBtn: true;
     titles?: React.CSSProperties;
     learnMoreBtn?: React.CSSProperties;
+    revolutionTitle?: React.CSSProperties;
   }
 }
 
@@ -116,13 +119,20 @@ const theme = createTheme({
       fontWeight: "bold",
       fontSize: 25,
     },
-
     learnMoreBtn: {
       borderRadius: 50,
       textTransform: "none",
       fontSize: 15,
       padding: "5px 10px",
       border: "2px solid",
+    },
+    revolutionTitle: {
+      color: themePalette.ARCBLUE,
+      fontFamily: "Pacifico",
+      textTransform: "capitalize",
+      fontSize: "1.5em",
+      fontWeight: 700,
+      lineHeight: 1.5,
     },
   },
 });

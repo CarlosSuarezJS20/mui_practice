@@ -62,7 +62,7 @@ const IosAndroidAppPage: React.FC<CustomDevelopmentPageProps> = ({
         <Grid
           container
           alignItems={matchesMd ? "flex-start" : "initial"}
-          justifyContent={matchesMd ? "center" : "space-between"}>
+          justifyContent='space-between'>
           <Grid item>
             <Grid container>
               <Grid item>
@@ -77,8 +77,7 @@ const IosAndroidAppPage: React.FC<CustomDevelopmentPageProps> = ({
                   direction='column'
                   sx={{
                     width: matchesSml ? "17em" : matchesMd ? "25em" : "35em",
-                  }}
-                  textAlign={matchesMd ? "center" : "initial"}>
+                  }}>
                   <Typography className={classes.titleService}>
                     iOS/Android App Development
                   </Typography>
